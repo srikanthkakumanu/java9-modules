@@ -71,6 +71,7 @@ module B {
 ```
 
 **Example:-**
+
 Note: Below mentioned examples are located in examples directory.
 
 ![](C:\practice\java9-modules\example.PNG)
