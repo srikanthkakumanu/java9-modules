@@ -118,9 +118,13 @@ appfuncs/module-info.java
 
 ```java
 module appfuncs {
-    exports com.simplefuncs;
+    // exports com.simplefuncs;
     // can also export to specific module - or modules in comma separated list
     // exports com.simplefuncs to appstart; 
+    // appsupport module created to demonstrate 
+    // transitive dependency or implied dependence or implied readability
+    exports com.simplefuncs;
+    requires transitive appsupport; // Thus no need to include appsupport in appstart module-info.java
 }
 ```
 
@@ -156,5 +160,9 @@ C:\practice\mymodapp> javac --module-path appmodules -d appmodules\appstart .\ap
 C:\practice\mymodapp> java --module-path appmodules -m appstart/com.mymodappdemo.MyModAppDemo
 <!-- Below is multi-module compilation with --module-source-path option -->
 C:\practice\mymodapp> javac -d appmodules --module-source-path appsrc appsrc\appstart\com\mymodappdemo\MyModAppDemo.java
+C:\practice\mymodapp> java --module-path appmodules -m appstart/appstart.mymodappdemo.MyModAppDemo
+<!-- multi-module compilation for transitive dependency example -->
+C:\practice\mymodapp> javac -d appmodules --module-source-path appsrc appsrc/appsupport/com/appsupport/SupportMathFuncs.java appsrc/appsupport/module-info.java appsrc/appfuncs/com/simplefuncs/SimpleMathFuncs.java appsrc/appfuncs/module-info.java appsrc/appstart/com/mymodappdemo/MyModAppDemo.java appsrc/appstart/module-info.java
+
 ```
 </div>
