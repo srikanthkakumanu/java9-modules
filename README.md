@@ -62,6 +62,8 @@ Consider there are 3 modules A, B, and C. Then, A requires B and B requires C (A
 **Then better solution is:** 
 Add a transitive dependency for C in B's module-info.java. Any module that depends on B will also, automatically, depend on C. Thus, A would automatically have access to C.
 
+**Note: _transitive_ keyword is a context-sensitive keyword** within module declaration and It is just an identifier when used outside modules and has no meaning.
+
 ```java
 // B's module-info.java
 module B {
